@@ -13,4 +13,4 @@ jobs:
         run: ls
 
       - name:
-        run: cat README.md
+        run: cd ../.. && cat README.md
