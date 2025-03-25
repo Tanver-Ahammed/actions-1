@@ -18,6 +18,9 @@ jobs:
 
       - name: Test File Exist
         run: grep -i "dragon" dragon.txt
+        
+      - name: Read Text
+        run: cat dragon.txt
 
       - name: List Read File
         run: ls -ltra
