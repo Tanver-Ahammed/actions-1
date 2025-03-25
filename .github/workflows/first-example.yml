@@ -13,10 +13,16 @@ jobs:
         run: |
           echo "Welcome to github actions"
           ls -ltra
-          cat cat README.md
+          cat README.md
+
+      - name: Install Cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
 
       - name: Generate ASCII Artwork
-        run: cowsay -f dragon "This is github action demo" >> dragon.txt
+        run: cowsay -f dragon "This is GitHub Action demo" >> dragon.txt
+
+      - name: Display Generated ASCII Art
+        run: cat dragon.txt
 
       # - name: List of files
       #   run: ls
