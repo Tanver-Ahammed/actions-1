@@ -1,0 +1,23 @@
+name: Generate ASCII Network
+
+on:
+  push
+
+jobs:
+  ascii_jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/chekout@v4
+
+      - name: Install Cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
+
+      - name: Generate ASCII Artwork
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+
+      - name: Test File Exist
+        run: grep -i "dragon" dragon.txt
+
+      - name: List Read File
+        run: ls -ltra
