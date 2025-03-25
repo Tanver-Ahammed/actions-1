@@ -13,7 +13,7 @@ jobs:
         run: echo "Welcome to github actions"
 
       - name: List of files
-        run: apt ubdate
+        run: ls
 
       - name:
         run: cat README.md
