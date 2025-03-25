@@ -1,31 +1,37 @@
-name: First Workflow
+name: Multi-Jobs
 
-on: push
+on:
+  push
 
 jobs:
-  first_job:
+  test_job_1:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout Repo
-        uses: actions/checkout@v4
-
-      - name: List and Read File
+      - name: Install Cowsey Program
         run: |
-          echo "Welcome to github actions"
-          ls -ltra
-          cat README.md
+          sudo apt-get update 
+          sudo apt-get install -y cowsay
+      - name: Execute Cowsey Program
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+      
+      - name: Sleep 30 s
+        run: sleep 30
 
-      - name: Install Cowsay
-        run: sudo apt-get update && sudo apt-get install -y cowsay
 
-      - name: Generate ASCII Artwork
-        run: cowsay -f dragon "This is GitHub Action demo" >> dragon.txt
+  test_job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep 30 s
+        run: sleep 30
 
-      - name: Display Generated ASCII Art
+      - name: Test Exist File
+        run: grep -i "dragon" dragon.txt
+
+  test_job_3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep 30 s
         run: cat dragon.txt
-
-      # - name: List of files
-      #   run: ls
-
-      # - name:
-      #   run: cat README.md
+      
+      - name: Test Exist File
+        run: ls -ltra
